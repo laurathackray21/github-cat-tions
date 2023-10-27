@@ -36,6 +36,7 @@ jobs:
           echo test, and deploy your project.
   cat:
     runs-on: ubuntu-latest
+    needs: [build]
     steps:
       - name: Feed the cat
         run: echo Meow
