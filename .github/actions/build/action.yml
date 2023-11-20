@@ -1,5 +1,6 @@
 name: build 
 runs:
-  steps:
+  steps: 
     - name: print hello
       run: echo "hello"
+      shell: bash
