@@ -27,10 +27,12 @@ jobs:
         id: environment
         with:
           script: |
-            if (context.github.ref !== 'refs/heads/main') {
+            console.log(github.ref)
+            if (github.ref !== 'refs/heads/main') {
+            
             return 'ephemeral';
             }
-            if (context.github.ref === 'refs/heads/main') {
+            if (github.ref === 'refs/heads/main') {
               return 'dev';
             }  
           result-encoding: string   
