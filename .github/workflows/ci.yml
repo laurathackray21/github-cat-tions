@@ -15,6 +15,29 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+
+  config:
+    runs-on: ubuntu-latest
+    # Map a step output to a job output
+    outputs:
+      environment: ${{ steps.environment.outputs.result }}
+      message: ${{ steps.message.outputs.test }}
+    steps:
+      - uses: actions/github-script@v7
+        id: environment
+        with:
+          script: |
+            if(github.ref !== 'refs/heads/main') {
+            return 'ephemeral';
+            }
+            if (github.ref === 'refs/heads/main') {
+              return 'dev';
+            }  
+          result-encoding: string   
+              
+      - id: message
+        run: echo "test=world" >> "$GITHUB_OUTPUT"
+  
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
