@@ -19,8 +19,7 @@ on:
     needs: [build]
     environment: dev
     steps:
-      - name: print url var 
-        run: echo ${{ vars.url }}
+      - uses: .github/actions/deploy.yml
         
 
         
