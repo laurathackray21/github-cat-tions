@@ -1,1 +1,4 @@
-
+name: build 
+runs:
+  - name: print hello
+    run: echo "hello"
