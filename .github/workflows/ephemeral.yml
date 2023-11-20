@@ -7,6 +7,7 @@ jobs:
   
   build:
     runs-on: ubuntu-latest
+    environment: ephemeral
     steps:      
       - uses: ./.github/actions/build.yml
 
