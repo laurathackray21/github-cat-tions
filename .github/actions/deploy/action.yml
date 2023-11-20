@@ -1,4 +1,7 @@
 name: deploy 
 runs:
-  - name: print url var 
-    run: echo ${{ vars.url }}
+  using: "composite"
+  steps:
+    - name: print url var 
+      run: echo ${{ vars.url }}
+      shell: bash
