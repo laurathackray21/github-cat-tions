@@ -1,1 +1,4 @@
-
+name: deploy 
+runs:
+  - name: print url var 
+    run: echo ${{ vars.url }}
