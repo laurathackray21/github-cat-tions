@@ -71,8 +71,8 @@ jobs:
 
   deploy: 
     runs-on: ubuntu-latest
-    needs: [build]
-    environment: ${{ config.outputs.environment }}
+    needs: [config, build]
+    environment: ${{ needs.config.outputs.environment }}
     steps:
       - name: print url var 
         run: echo ${{ vars.url }}
