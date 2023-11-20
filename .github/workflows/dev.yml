@@ -8,16 +8,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  checkout:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-  
+ 
   build:
     runs-on: ubuntu-latest
     environment: dev  
-    needs: [checkout]
-    steps:      
+    steps:  
+      - uses: actions/checkout@v3
       - uses: ./.github/actions/build
 
   deploy: 
@@ -25,6 +21,7 @@ jobs:
     needs: [build]
     environment: dev
     steps:
+      - uses: actions/checkout@v3
       - uses: ./.github/actions/deploy
         
 
