@@ -1,4 +1,5 @@
 name: build 
 runs:
-  - name: print hello
-    run: echo "hello"
+  steps:
+    - name: print hello
+      run: echo "hello"
