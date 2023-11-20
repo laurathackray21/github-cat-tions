@@ -1,1 +1,21 @@
+name: ephemeral
+on: 
+  pull_request:    
+  workflow_dispatch:
 
+jobs:
+  
+  build:
+    runs-on: ubuntu-latest
+    steps:      
+      - uses: ./.github/actions/build.yml
+
+  deploy: 
+    runs-on: ubuntu-latest
+    needs: [build]
+    environment: ephemeral
+    steps:
+      - uses: ./.github/actions/deploy.yml
+        
+
+        
