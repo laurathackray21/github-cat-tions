@@ -1,5 +1,6 @@
 name: build 
 runs:
+  using: "composite"
   steps: 
     - name: print hello
       run: echo "hello"
