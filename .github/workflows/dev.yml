@@ -8,10 +8,15 @@ on:
   workflow_dispatch:
 
 jobs:
+  checkout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
   
   build:
     runs-on: ubuntu-latest
-    environment: dev    
+    environment: dev  
+    needs: [checkout]
     steps:      
       - uses: ./.github/actions/build.yml
 
