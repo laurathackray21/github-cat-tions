@@ -1,7 +1,7 @@
 name: deploy 
 runs:
-  using: "composite"
+  using: "composite"  
   steps:
     - name: print url var 
-      run: echo "Environment URL - ${{ env.URL }}"
+      run: echo "Environment URL - ${{ vars.URL }}"
       shell: bash
