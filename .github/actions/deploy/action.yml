@@ -3,5 +3,5 @@ runs:
   using: "composite"
   steps:
     - name: print url var 
-      run: echo ${{ env.URL }}
+      run: echo "Environment URL: ${{ env.URL }}"
       shell: bash
