@@ -2,7 +2,7 @@ name: Build and Deploy
 on:
   workflow_call:
     inputs:
-        URL:
+        url:
           required: true
           type: string
         environment:
@@ -22,4 +22,4 @@ jobs:
     environment: ${{inputs.environment}}
     steps:
       - name: print url var 
-        run: echo ${{ inputs.URL }}
+        run: echo ${{ inputs.url }}
