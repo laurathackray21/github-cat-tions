@@ -8,13 +8,9 @@ on:
 jobs:
 
   build-and-deploy:
-     runs-on: ubuntu-latest
-     environment: dev  
-     steps:  
-        - uses: actions/checkout@v3
-        - uses: ./.github/actions/build-and-deploy
-          with: 
-            variables: ${{ vars }}
+    uses: ./.github/workflows/ci-cd.yml@main
+    with:
+      vars: inherit
             
   #     - uses: actions/checkout@v3
   #   environment: dev  
