@@ -9,13 +9,9 @@ on:
 
 jobs:
   build-and-deploy:
-    environment: dev
-    runs-on: ubuntu-latest
-    steps:
-      - uses: ./.github/workflows/ci-cd.yml
-        with:
-          environment: dev
-          url: ${{vars.URL}}
+    uses: ./.github/workflows/ci-cd.yml
+    with:
+      environment: dev
             
   #     - uses: actions/checkout@v3
   #   environment: dev  
