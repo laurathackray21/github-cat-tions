@@ -1,7 +1,12 @@
-name: deploy 
+name: deploy
+description: deploy the code
+inputs:
+  url: 
+    description: the url of the environment we are deploying to
+    required: true
 runs:
   using: "composite"  
   steps:
     - name: print url var 
-      run: echo "Environment URL - ${{ vars.URL }}"
+      run: echo "Environment URL - ${{ inputs.url }}"
       shell: bash
