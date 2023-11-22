@@ -6,23 +6,34 @@ on:
   workflow_dispatch:
 
 jobs:
- 
-  build:
-    runs-on: ubuntu-latest
-    environment: dev  
-    steps:  
-      - uses: actions/checkout@v3
-      - uses: ./.github/actions/build        
 
-  deploy: 
-    runs-on: ubuntu-latest
-    needs: [build]
-    environment: dev
-    steps:
-      - uses: actions/checkout@v3
-      - uses: ./.github/actions/deploy
-        with: 
-          url: ${{ vars.URL }}
+  build-and-deploy:
+     runs-on: ubuntu-latest
+     environment: dev  
+     steps:  
+        - uses: actions/checkout@v3
+        - uses: ./.github/actions/build-and-deploy
+          with: 
+            variables: ${{ vars }}
+            
+  #     - uses: actions/checkout@v3
+  #   environment: dev  
+  # build:
+  #   runs-on: ubuntu-latest
+  #   environment: dev  
+  #   steps:  
+  #     - uses: actions/checkout@v3
+  #     - uses: ./.github/actions/build        
+
+  # deploy: 
+  #   runs-on: ubuntu-latest
+  #   needs: [build]
+  #   environment: dev
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: ./.github/actions/deploy
+  #       with: 
+  #         url: ${{ vars.URL }}
         
 
         
