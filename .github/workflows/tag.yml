@@ -6,8 +6,8 @@ jobs:
   test-bot:
     name: tag bot
     runs-on: ubuntu-latest    
-    permissions:
-      contents: write
+    # permissions:
+    #   contents: write
 
     steps:
       - uses: actions/create-github-app-token@v1
