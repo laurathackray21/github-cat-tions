@@ -17,6 +17,13 @@ jobs:
           private-key: ${{ secrets.CATIONS_PRIVATE_KEY }}
       
       - name: create using git binary
+        
         env:
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
-          GH_WORKFLOW_ACTOR: ${{ github.actor }} # TODO: see if we can use the bot
+          # GH_WORKFLOW_ACTOR: ${{ github.actor }} # TODO: see if we can use the bot
+        run: |
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git config user.name "${{ github.actor }}"
+          git tag 1.0
+          git push 
+        
