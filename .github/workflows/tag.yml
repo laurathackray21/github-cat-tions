@@ -1,10 +1,10 @@
-name: test
+name: tag
 on: 
   push:
     branches: [ "main" ]
 jobs:
   test-bot:
-    name: test bot
+    name: tag bot
     runs-on: ubuntu-latest    
     permissions:
       contents: write
@@ -15,3 +15,8 @@ jobs:
         with:
           app-id: ${{ secrets.CATIONS_APP_ID }}
           private-key: ${{ secrets.CATIONS_PRIVATE_KEY }}
+      
+      - name: create using git binary
+        env:
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+          GH_WORKFLOW_ACTOR: ${{ github.actor }} # TODO: see if we can use the bot
