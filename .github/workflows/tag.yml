@@ -27,5 +27,5 @@ jobs:
           git config user.email "${{ github.actor }}@users.noreply.github.com"
           git config user.name "${{ github.actor }}"
           git tag 1.0
-          git push 
+          git push --tags
         
