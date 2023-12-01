@@ -15,9 +15,11 @@ jobs:
         with:
           app-id: ${{ secrets.CATIONS_APP_ID }}
           private-key: ${{ secrets.CATIONS_PRIVATE_KEY }}
+
+      - name: checkout
+        uses: actions/checkout@v3
       
-      - name: create using git binary
-        
+      - name: create using git binary        
         env:
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
           # GH_WORKFLOW_ACTOR: ${{ github.actor }} # TODO: see if we can use the bot
