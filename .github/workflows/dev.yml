@@ -1,7 +1,6 @@
 name: dev
 on:
   push:
-    branches: [ "main" ]
     tags: 
       - '**'
     
