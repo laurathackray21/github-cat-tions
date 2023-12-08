@@ -6,8 +6,8 @@ jobs:
   test-bot:
     name: tag bot
     runs-on: ubuntu-latest    
-    # permissions:
-    #   contents: write
+    permissions:
+      contents: write
 
     steps:
       - uses: actions/create-github-app-token@v1
@@ -19,13 +19,21 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
       
-      - name: create using git binary        
-        # env:
-          # GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
-          # GH_WORKFLOW_ACTOR: ${{ github.actor }} # TODO: see if we can use the bot
+      # - name: create using git binary        
+      #   # env:
+      #     # GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+      #     # GH_WORKFLOW_ACTOR: ${{ github.actor }} # TODO: see if we can use the bot
+      #   run: |  
+            # git config user.email "${{ github.actor }}@users.noreply.github.com"
+            # git config user.name "${{ github.actor }}"
+      #     git tag 2.0
+      #     git push --tags
+      - name: set config
         run: |
           git config user.email "${{ github.actor }}@users.noreply.github.com"
           git config user.name "${{ github.actor }}"
-          git tag 2.0
-          git push --tags
+      - name: tag
+        run: git tag 2.0
+      - name: push tag
+        run: git push --tags
         
