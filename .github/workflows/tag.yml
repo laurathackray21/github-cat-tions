@@ -19,17 +19,29 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
         
-      - name: set config
-        run: |
-          git config user.email "${{ github.actor }}@users.noreply.github.com"
-          git config user.name "${{ github.actor }}"
+      # - name: set config
+      #   run: |
+      #     git config user.email "${{ github.actor }}@users.noreply.github.com"
+      #     git config user.name "${{ github.actor }}"
           
-      - name: tag
-        run: git tag 7.0
+      # - name: tag
+      #   run: git tag 7.0
         
-      - name: push tag
+      # - name: push tag
+      #   env:
+      #     GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+      #     # GH_WORKFLOW_ACTOR: ${{ github.actor }} # TODO: see if we can use the bot
+      #   run: git push --tags
+
+      - name: Create tag
+        uses: actions/github-script@v5
         env:
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
-          # GH_WORKFLOW_ACTOR: ${{ github.actor }} # TODO: see if we can use the bot
-        run: git push --tags
-        
+        with:
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'refs/tags/8.0',
+              sha: context.sha
+            })
