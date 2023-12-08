@@ -36,8 +36,8 @@ jobs:
       - name: Create tag
         uses: actions/github-script@v5
         env:
-          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
-          GH_WORKFLOW_ACTOR: ${{ github.actor }} # TODO: see if we can use the bot
+          GITHUB_TOKEN: "INVALID" #${{ steps.app-token.outputs.token }}
+          # GH_WORKFLOW_ACTOR: ${{ github.actor }} # TODO: see if we can use the bot
         with:
           script: |
             github.rest.git.createRef({
