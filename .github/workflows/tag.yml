@@ -25,7 +25,7 @@ jobs:
           git config user.name "${{ github.actor }}"
           
       - name: tag
-        run: git tag 6.0
+        run: git tag 7.0
         
       - name: push tag
         env:
